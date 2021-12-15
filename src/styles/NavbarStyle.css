@@ -1,0 +1,43 @@
+
+/* Navbar Section */
+.avatar{
+    margin-right: 100px;
+}
+
+.navBtnLogin {
+    margin: 0 18px;
+    color: #E8E8E8;
+    background-color: #C32424;
+    border-color: #C32424;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.navBtnLogin:hover {
+    color: #E8E8E8;
+    background-color: #C32424;
+    border-color: #C32424;
+}
+
+.navBtnRegister {
+    width: 100px;
+    margin: 0 18px;
+    color: #C32424;
+    background-color: #E8E8E8;
+    border-color: #E8E8E8;
+    border-radius: 10px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.navBtnRegister:hover {
+    color: #C32424;
+    background-color: #E8E8E8;
+    border-color: #E8E8E8;
+}
+
+.navTheme {
+    padding-left: 50px;
+    background-color: #C32424;
+}
