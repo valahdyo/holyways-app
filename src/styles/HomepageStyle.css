@@ -1,9 +1,12 @@
 @import url('http://fonts.cdnfonts.com/css/avenir-lt-std');
 @import url('http://fonts.cdnfonts.com/css/product-sans');
 
-
+html {
+    background-color: #E5E5E5;
+}
 body {
     font-family: 'Avenir LT Std', sans-serif;
+    background-color: #E5E5E5;
 }
 
 .light-color {
@@ -122,7 +125,6 @@ body {
     background-color: #C32424;
     border-radius: 10px;
     border-color: #C32424;
-    
 }
 
 .donate-btn:hover {
@@ -145,4 +147,6 @@ body {
     margin-right: 14px;
     display: inline-block;
 }
+
+
 

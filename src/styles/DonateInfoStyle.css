@@ -1,0 +1,51 @@
+.donate-info-wrapper {
+    background-color: #E5E5E5;
+    padding-top: 5%;
+}
+
+.donate-info-progress {
+    background-color: #C4C4C4;
+    width: 100%;
+    height: 5px;
+}
+
+.donate-info-photo {
+    width: 95%;
+    height: 100%;
+}
+
+.donate-info-desc {
+        color: #616161;
+        font-size: 18px;
+        font-weight: 400;
+}
+
+.donate-info-collected {
+    width: 90%;
+}
+
+.donate-info-detail {
+    font-family: 'Product Sans', 'sans-serif';
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fs-6 {
+    font-size: 13px;
+    font-size: 400;
+}
+
+.donate-total {
+    font-family: 'Product Sans', 'sans-serif';
+    color: #C32424;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.ml-7 {
+    margin-left: 3%;
+}
+
+.ml-40 {
+    margin-left: 40%;
+}
