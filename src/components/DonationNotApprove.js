@@ -1,7 +1,20 @@
-import { Button, Container, Row, Col } from "react-bootstrap";
+import {useState} from 'react'
+import { Modal, Form, Button, Container, Row, Col } from "react-bootstrap";
+import Struk from '../assets/struk.png'
 
 function DonationNotApproveComponent() {
+  const [showDonate, setShowDonate] = useState(false)
+
+    const handleShowDonate = () => {
+        setShowDonate(true)
+    }
+
+    const handleCloseDonate = () => {
+        setShowDonate(false)
+    }
+
   return (
+    <>
     <Container>
       <h1 className="profile-heading pt-5 mb-4">
         Donation has not been approved (10)
@@ -18,7 +31,7 @@ function DonationNotApproveComponent() {
               <p className="donation-total">Total : Rp. 45.000</p>
             </div>
             <div className="align-self-center">
-              <Button className="donate-btn" variant="primary">
+              <Button onClick={handleShowDonate} className="donate-btn" variant="primary">
                 View
               </Button>
             </div>
@@ -35,7 +48,7 @@ function DonationNotApproveComponent() {
               <p className="donation-total">Total : Rp. 45.000</p>
             </div>
             <div className="align-self-center">
-              <Button className="donate-btn" variant="primary">
+              <Button onClick={handleShowDonate} className="donate-btn" variant="primary">
                 View
               </Button>
             </div>
@@ -52,7 +65,7 @@ function DonationNotApproveComponent() {
               <p className="donation-total">Total : Rp. 45.000</p>
             </div>
             <div className="align-self-center">
-              <Button className="donate-btn" variant="primary">
+              <Button onClick={handleShowDonate} className="donate-btn" variant="primary">
                 View
               </Button>
             </div>
@@ -60,6 +73,39 @@ function DonationNotApproveComponent() {
         </Col>
       </Row>
     </Container>
+    
+    <Modal show={showDonate} onHide={handleCloseDonate} contentClassName="w-100 m-auto">
+        <Modal.Body>
+          <Row className="d-flex justify-content-center">
+            
+            <Col lg="11">
+            <h1 className="view-donate-heading">Zain</h1>
+              <Form /*onSubmit={handleOnSubmit}*/>
+                <Form.Group className="mt-3 mb-3" controlId="formNominalDonation">
+                  <Form.Control
+                    className="form-color"
+                    // onChange={handleOnChange}
+                    // value={state.fullname}
+                    name="fullname"
+                    size="sm"
+                    type="text"
+                    placeholder="45.000.000"
+                  />
+                </Form.Group>
+                <img src={Struk} alt="struk"></img>               
+                <Button
+                  onClick={handleCloseDonate}
+                  className="attach-donate-btn mt-3 mb-3"
+                  style={{ width: "100%" }}
+                >
+                  Approve
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 }
 

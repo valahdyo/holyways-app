@@ -4,6 +4,17 @@
     margin-right: 100px;
 }
 
+#dropdown-basic {
+    background-color: #C32424;
+    border-color: #C32424;
+    margin-right: 100px;
+}
+
+#dropdown-basic:active {
+    background-color: #C32424;
+    border-color: #C32424;
+}
+
 .navBtnLogin {
     margin: 0 18px;
     color: #E8E8E8;
