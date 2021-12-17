@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import {Modal, Form, Button, ProgressBar, Container, Row, Col, } from "react-bootstrap";
+import {Button, ProgressBar, Container, Row, Col, } from "react-bootstrap";
 import DonateModalComponent from './DonateModal'
 import Donate1 from "../assets/donate-1.png"
-import IconAttach from "../assets/icon-attach-payment.png"
+
 
 function DonateInfoComponet() {
     const [showDonate, setShowDonate] = useState(false)

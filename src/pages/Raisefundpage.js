@@ -10,6 +10,7 @@ import DonateCardComponent from "../components/DonateCard";
 import DonateImage_1 from "../assets/donate-1.png";
 
 function Raisefundpage() {
+  let isLogin = localStorage.getItem('isLogin')
   let history = useHistory()
   const handleRaisefund = () => history.push('/formfund')
 
@@ -26,6 +27,7 @@ function Raisefundpage() {
         <Row>
           <Col lg={4} className="donate-box pl-0 pt-0">
           <DonateCardComponent
+              isLogin={isLogin}
               image={DonateImage_1}
               title={"The Strength of a People. Power of Community"}
               desc={

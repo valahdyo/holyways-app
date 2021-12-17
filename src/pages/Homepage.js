@@ -21,11 +21,12 @@ function Homepage() {
   let history = useHistory()
   isLogin = localStorage.getItem('isLogin')
   const [showLogin, setShowLogin] = useState(false);
-
+  
   const handleShowLogin = () => setShowLogin(true);
   const handleDonateNow = () => {
     history.push('/donate')
   }
+  const closeLogin = () => setShowLogin(false);
   const handleCloseLogin = () => {
     login()
     localStorage.setItem('isLogin', "true")
@@ -91,6 +92,7 @@ function Homepage() {
         <Row>
           <Col lg={4} className="donate-box">
             <DonateCardComponent
+              closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
               isLogin={isLogin}
               image={DonateImage_1}
@@ -104,6 +106,7 @@ function Homepage() {
           </Col>
           <Col lg={4} className="donate-box">
             <DonateCardComponent
+              closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
               isLogin={isLogin}
               image={DonateImage_2}
@@ -117,6 +120,7 @@ function Homepage() {
           </Col>
           <Col lg={4} className="donate-box">
             <DonateCardComponent
+              closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
               isLogin={isLogin}
               image={DonateImage_3}
@@ -130,7 +134,7 @@ function Homepage() {
           </Col>
         </Row>
       </Container>
-      <LoginModalComponent showLogin={showLogin} handleCloseLogin={handleCloseLogin}/>
+      <LoginModalComponent closeLogin={closeLogin} showLogin={showLogin} handleCloseLogin={handleCloseLogin}/>
     </>
   );
 }

@@ -1,5 +1,4 @@
-import {Modal, Form, Button, ProgressBar, Container, Row, Col, } from "react-bootstrap";
-import {useState} from 'react'
+import {Modal, Form, Button, Row, Col, } from "react-bootstrap";
 
 import IconAttach from "../assets/icon-attach-payment.png"
 
