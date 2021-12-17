@@ -1,7 +1,11 @@
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import NavbarComponent from "../components/Navbar";
 
 function Formfundpage() {
+  let history = useHistory()
+  const handlePublishFund = () => history.push('/raisefund')
+  
   return (
     <>
       <NavbarComponent />
@@ -45,7 +49,7 @@ function Formfundpage() {
                 />
               </Form.Group>
 
-              <Button style={{marginLeft:"75%"}} className="mt-5 donate-btn w-25" type="submit" size="sm">
+              <Button onClick={handlePublishFund} style={{marginLeft:"75%"}} className="mt-5 donate-btn w-25" type="submit" size="sm">
                 Public Fundraising
               </Button>
             </Form>

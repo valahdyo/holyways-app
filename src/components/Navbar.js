@@ -1,35 +1,65 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {useHistory, Link} from 'react-router-dom'
 import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Modal,
   Nav,
   Navbar,
   Button,
 } from "react-bootstrap";
+
+import { AuthContext } from "../context/AuthContext";
 import DropdownComponent from "./Dropdown";
-import LoginModalComponent from "./Loginmodal";
+import LoginModalComponent from "./LoginModal";
+import RegisterModalComponent from "./RegisterModal";
 import Logo from "../assets/brand-logo.png";
-import Avatar from "../assets/avatar.png";
 
 function NavbarComponent() {
-  let isLogin = false;
 
+  let {isLogin, login, logout} = useContext(AuthContext)
+  isLogin = localStorage.getItem('isLogin')
+  const history = useHistory()
+  
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
-  const handleCloseRegister = () => setShowRegister(false);
+  const handleShowLogin = () => setShowLogin(true);
   const handleShowRegister = () => setShowRegister(true);
 
-  const handleCloseLogin = () => setShowLogin(false);
-  const handleShowLogin = () => setShowLogin(true);
+  const handleProfile = () => {
+    history.push('/profile')
+  }
+
+  const handleRaisefund = () => {
+    history.push('/raisefund')
+  }
+
+  const closeLogin = () => setShowLogin(false);
+  const closeRegister = () => setShowRegister(false);
+
+  const handleCloseLogin = () => {
+    login()
+    localStorage.setItem('isLogin', "true")
+    setShowLogin(false);
+    history.push("/")
+  }
+
+  const handleCloseRegister = () => {
+    login()
+    localStorage.setItem('isLogin', "true")
+    setShowRegister(false);
+    history.push("/")
+  };
+
+  const handleLogout = () => {
+    logout()
+    localStorage.setItem('isLogin', "false")
+    history.push("/")
+  }
+
 
   return (
     <>
       <Navbar className="navTheme">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to='/'>
           <img
             alt=""
             src={Logo}
@@ -38,8 +68,8 @@ function NavbarComponent() {
           />{" "}
         </Navbar.Brand>
         <Nav className="ml-auto px-2">
-          {isLogin ? (
-            <DropdownComponent />
+          {isLogin === "true" ? (
+            <DropdownComponent handleProfile={handleProfile} handleRaisefund={handleRaisefund} handleLogout={handleLogout}/>
           ) : (
             <>
               <Button onClick={handleShowLogin} className="navBtnLogin">
@@ -51,108 +81,8 @@ function NavbarComponent() {
         </Nav>
       </Navbar>
 
-      <Modal show={showLogin} onHide={handleCloseLogin} contentClassName="w-75 m-auto">
-        <Modal.Body>
-          <Row className="d-flex justify-content-center">
-            <Col lg="11">
-              <div className="profile-heading text-left mt-3 mb-4 h3">
-                Login
-              </div>
-              <Form /*onSubmit={handleOnSubmit}*/>
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Control
-                    className="form-color"
-                    // onChange={handleOnChange}
-                    // value={state.fullname}
-                    name="fullname"
-                    size="sm"
-                    type="text"
-                    placeholder="Email"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-4" controlId="formPassword">
-                  <Form.Control
-                    className="form-color"
-                    // onChange={handleOnChange}
-                    // value={state.email}
-                    name="email"
-                    size="sm"
-                    type="email"
-                    placeholder="Password"
-                  />
-                </Form.Group>
-                <Button
-                  onClick={handleCloseLogin}
-                  className="donate-btn mb-3"
-                  style={{ width: "100%" }}
-                >
-                  Login
-                </Button>
-                <p className="text-center">
-                  Don't have an account ? Klik <strong>Here</strong>
-                </p>
-              </Form>
-            </Col>
-          </Row>
-        </Modal.Body>
-      </Modal>
-
-      <Modal show={showRegister} onHide={handleCloseRegister} contentClassName="w-75 m-auto">
-        <Modal.Body>
-          <Row className="d-flex justify-content-center">
-            <Col lg="11">
-              <div className="profile-heading text-left mt-3 mb-4 h3">
-                Register
-              </div>
-              <Form /*onSubmit={handleOnSubmit}*/>
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Control
-                    className="form-color"
-                    // onChange={handleOnChange}
-                    // value={state.fullname}
-                    name="fullname"
-                    size="sm"
-                    type="text"
-                    placeholder="Email"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPassword">
-                  <Form.Control
-                    className="form-color"
-                    // onChange={handleOnChange}
-                    // value={state.email}
-                    name="email"
-                    size="sm"
-                    type="email"
-                    placeholder="Password"
-                  />
-                </Form.Group>
-                <Form.Group className="mb-4" controlId="formFullName">
-                  <Form.Control
-                    className="form-color"
-                    // onChange={handleOnChange}
-                    // value={state.email}
-                    name="email"
-                    size="sm"
-                    type="email"
-                    placeholder="Full Name"
-                  />
-                </Form.Group>
-                <Button
-                  onClick={handleCloseRegister}
-                  className="donate-btn mb-3"
-                  style={{ width: "100%" }}
-                >
-                  Register
-                </Button>
-                <p className="text-center">
-                  Don't have an account ? Klik <strong>Here</strong>
-                </p>
-              </Form>
-            </Col>
-          </Row>
-        </Modal.Body>
-      </Modal>
+      <LoginModalComponent closeLogin={closeLogin} showLogin={showLogin} handleCloseLogin={handleCloseLogin}/>
+      <RegisterModalComponent closeRegister={closeRegister} showRegister={showRegister} handleCloseRegister={handleCloseRegister}/>
     </>
   );
 }

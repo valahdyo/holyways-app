@@ -4,7 +4,11 @@ import IconProfile from "../assets/icon-profile.png"
 import IconRaiseFund from "../assets/icon-raisefund.png"
 import IconLogout from "../assets/icon-logout.png"
 
-function DropdownComponent() {
+function DropdownComponent(props) {
+
+  
+
+  const {handleLogout, handleRaisefund, handleProfile} = props
   return (
     <>
       <Dropdown>
@@ -14,10 +18,10 @@ function DropdownComponent() {
         ><img src={Avatar} alt="avatar"></img></Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1"><img className="mr-3" src={IconProfile} alt="profile"/>Profile</Dropdown.Item>
-          <Dropdown.Item href="#/action-2"><img className="mr-3" src={IconRaiseFund} alt="raise-fund"/>Raise Fund</Dropdown.Item>
+          <Dropdown.Item onClick={handleProfile}><img className="mr-3" src={IconProfile} alt="profile"/>Profile</Dropdown.Item>
+          <Dropdown.Item onClick={handleRaisefund}><img className="mr-3" src={IconRaiseFund} alt="raise-fund"/>Raise Fund</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item href="#/action-3"><img className="mr-3" src={IconLogout} alt="logout"/>Logout</Dropdown.Item>
+          <Dropdown.Item onClick={handleLogout}><img className="mr-3" src={IconLogout} alt="logout"/>Logout</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

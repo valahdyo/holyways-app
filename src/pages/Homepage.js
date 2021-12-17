@@ -1,7 +1,10 @@
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import NavbarComponent from "../components/Navbar";
+import DonateCardComponent from "../components/DonateCard";
+import LoginModalComponent from "../components/LoginModal";
 import {
-  ProgressBar,
-  Card,
   Button,
   Container,
   Row,
@@ -13,8 +16,22 @@ import DonateImage_1 from "../assets/donate-1.png";
 import DonateImage_2 from "../assets/donate-2.png";
 import DonateImage_3 from "../assets/donate-3.png";
 
-
 function Homepage() {
+  let {isLogin, login} = useContext(AuthContext)
+  let history = useHistory()
+  isLogin = localStorage.getItem('isLogin')
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleShowLogin = () => setShowLogin(true);
+  const handleDonateNow = () => {
+    history.push('/donate')
+  }
+  const handleCloseLogin = () => {
+    login()
+    localStorage.setItem('isLogin', "true")
+    setShowLogin(false);
+    history.push("/")
+  }
   return (
     <>
       <NavbarComponent />
@@ -31,7 +48,7 @@ function Homepage() {
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book.
             </p>
-            <Button className="header-btn">Donate Now</Button>
+            <Button onClick={isLogin === "true" ? handleDonateNow : handleShowLogin} className="header-btn">Donate Now</Button>
           </Col>
           <Col lg={5}>
             <img src={HeaderImage_1} className="header-img-1" alt="hero1"></img>
@@ -73,65 +90,47 @@ function Homepage() {
         <h1 class="donate-heading">Donate Now</h1>
         <Row>
           <Col lg={4} className="donate-box">
-            <Card style={{ width: "20rem" }}>
-              <Card.Img variant="top" src={DonateImage_1} />
-              <Card.Body>
-                <Card.Title className="donate-title">
-                  The Strength of a People. Power of Community
-                </Card.Title>
-                <Card.Text className="donate-desc">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <ProgressBar className="donate-progress" variant="danger" now={60} />
-                <div className="donate-box-bottom">
-                <p className="donate-collected">Rp 25.000.000</p>
-                <Button className="donate-btn" variant="primary">Donate</Button>
-                </div>
-                
-              </Card.Body>
-            </Card>
+            <DonateCardComponent
+              handleShowLogin={handleShowLogin}
+              isLogin={isLogin}
+              image={DonateImage_1}
+              title={"The Strength of a People. Power of Community"}
+              desc={
+                "Some quick example text to build on the card title and make up the bulk of the card's content."
+              }
+              total={"Rp 25.000.000"}
+              progress={60}
+            />
           </Col>
           <Col lg={4} className="donate-box">
-            <Card style={{ width: "20rem" }}>
-              <Card.Img variant="top" src={DonateImage_2} />
-              <Card.Body>
-                <Card.Title className="donate-title">
-                  Empowering Communities Ending Poverty
-                </Card.Title>
-                <Card.Text className="donate-desc">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <ProgressBar className="donate-progress" variant="danger" now={40} />
-                <div className="donate-box-bottom">
-                <p className="donate-collected">Rp 25.000.000</p>
-                <Button className="donate-btn" variant="primary">Donate</Button>
-                </div>
-              </Card.Body>
-            </Card>
+            <DonateCardComponent
+              handleShowLogin={handleShowLogin}
+              isLogin={isLogin}
+              image={DonateImage_2}
+              progress={40}
+              total={"Rp 25.000.000"}
+              title={"Empowering Communities Ending Poverty"}
+              desc={
+                "Some quick example text to build on the card title and make up the bulk of the card's content."
+              }
+            />
           </Col>
           <Col lg={4} className="donate-box">
-            <Card style={{ width: "20rem" }}>
-              <Card.Img variant="top" src={DonateImage_3} />
-              <Card.Body>
-                <Card.Title className="donate-title">
-                  Please our brothers in flores
-                </Card.Title>
-                <Card.Text className="donate-desc">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <ProgressBar className="donate-progress" variant="danger" now={80} />
-                <div className="donate-box-bottom">
-                <p className="donate-collected">Rp 25.000.000</p>
-                <Button className="donate-btn" variant="primary">Donate</Button>
-                </div>
-              </Card.Body>
-            </Card>
+            <DonateCardComponent
+              handleShowLogin={handleShowLogin}
+              isLogin={isLogin}
+              image={DonateImage_3}
+              progress={80}
+              total={"Rp 60.000.000"}
+              title={"Please our brothers in flores"}
+              desc={
+                "Some quick example text to build on the card title and make up the bulk of the card's content."
+              }
+            />
           </Col>
         </Row>
       </Container>
+      <LoginModalComponent showLogin={showLogin} handleCloseLogin={handleCloseLogin}/>
     </>
   );
 }
