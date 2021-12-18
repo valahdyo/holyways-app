@@ -19,7 +19,7 @@ function DonationNotApproveComponent() {
       <h1 className="profile-heading pt-5 mb-4">
         Donation has not been approved (10)
       </h1>
-      <Row>
+      <Row className='justify-content-center'>
         <Col lg={12}>
           <div className="d-flex justify-content-between donation-box mb-4 pt-4 pl-4">
             <div className="w-50">
@@ -71,6 +71,7 @@ function DonationNotApproveComponent() {
             </div>
           </div>
         </Col>
+        <p className="donate-info-desc">Load More</p>
       </Row>
     </Container>
     <ApproveModalComponent showDonate={showDonate} handleCloseDonate={handleCloseDonate} />

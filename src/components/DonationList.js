@@ -4,7 +4,7 @@ function DonationListComponent() {
   return (
     <Container className="mt-5">
         <h1 className="profile-heading pt-5 mb-4">List Donation (200)</h1>
-      <Row>
+      <Row className="justify-content-center">
         <Col lg={12}>
           <div className="donation-box mb-4 pt-4 pl-4">
             <h3 className="donation-heading">
@@ -41,6 +41,7 @@ function DonationListComponent() {
             <p className="donation-total">Total : Rp. 45.000</p>
           </div>
         </Col>
+        <p className="donate-info-desc">Load More</p>
       </Row>
     </Container>
   );
