@@ -16,7 +16,8 @@ function Routes() {
             <PrivateRoute exact path='/donate' component={DetailDonatepage}/>
             <PrivateRoute exact path='/raisefund' component={Raisefundpage}/>
             <PrivateRoute exact path='/formfund' component={Formfundpage}/>
-            <Route path='*' component={() => {return <h1>404 Not Found</h1>}}/>
+            
+            <Route path='*' component={() => {return <h1 className='display-4 font-weight-bold text-center mt-5'>404 Not Found</h1>}}/>
         </Switch>
     )
 }

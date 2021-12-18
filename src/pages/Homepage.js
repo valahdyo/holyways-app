@@ -90,7 +90,7 @@ function Homepage() {
       <Container fluid className="donate-wrapper">
         <h1 class="donate-heading">Donate Now</h1>
         <Row>
-          <Col lg={4} className="donate-box">
+          <Col lg={4} md={6} className="donate-box">
             <DonateCardComponent
               closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
@@ -104,7 +104,7 @@ function Homepage() {
               progress={60}
             />
           </Col>
-          <Col lg={4} className="donate-box">
+          <Col lg={4} md={6} className="donate-box">
             <DonateCardComponent
               closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
@@ -118,7 +118,7 @@ function Homepage() {
               }
             />
           </Col>
-          <Col lg={4} className="donate-box">
+          <Col lg={4} md={6} className="donate-box">
             <DonateCardComponent
               closeLogin={closeLogin}
               handleShowLogin={handleShowLogin}
