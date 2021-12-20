@@ -23,9 +23,6 @@ function Homepage() {
   const [showLogin, setShowLogin] = useState(false);
   
   const handleShowLogin = () => setShowLogin(true);
-  const handleDonateNow = () => {
-    history.push('/donate')
-  }
   const closeLogin = () => setShowLogin(false);
   const handleCloseLogin = () => {
     login()
@@ -49,7 +46,7 @@ function Homepage() {
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book.
             </p>
-            <Button onClick={isLogin === "true" ? handleDonateNow : handleShowLogin} className="header-btn">Donate Now</Button>
+            <Button href="#donate-now" className="header-btn">Donate Now</Button>
           </Col>
           <Col lg={5}>
             <img src={HeaderImage_1} className="header-img-1" alt="hero1"></img>
@@ -88,7 +85,7 @@ function Homepage() {
         </Row>
       </Container>
       <Container fluid className="donate-wrapper">
-        <h1 class="donate-heading">Donate Now</h1>
+        <h1 id="donate-now" class="donate-heading">Donate Now</h1>
         <Row>
           <Col lg={4} md={6} className="donate-box">
             <DonateCardComponent

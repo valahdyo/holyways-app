@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import NavbarComponent from "../components/Navbar";
@@ -5,6 +6,11 @@ import NavbarComponent from "../components/Navbar";
 function Formfundpage() {
   let history = useHistory()
   const handlePublishFund = () => history.push('/raisefund')
+
+  const inputRef = useRef()
+  const handleUpload = () => {
+    inputRef.current?.click();
+  };
   
   return (
     <>
@@ -24,7 +30,8 @@ function Formfundpage() {
                   placeholder="Title"
                 />
               </Form.Group>
-              <Button className="donate-btn mb-3" style={{width: "15%"}}>Attach Thumbnail</Button>
+              <input ref={inputRef} className="d-none" type="file" />
+              <Button onClick={handleUpload} className="donate-btn mb-3" style={{width: "15%"}}>Attach Thumbnail</Button>
               <Form.Group className="mb-3" controlId="formBasicGoals">
                 <Form.Control className="form-color"
                   // onChange={handleOnChange}
